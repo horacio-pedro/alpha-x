@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="{{siteLang}}">
+    <head>
+        <meta charset="UTF-8">
+        <title>{{title}}</title>
+        <meta name="description" content="{{systemDescription}}">
+        <meta name="viewport" content="width=device-width">
+        {{#each favicon}}
+        <link rel="icon" href="/img/{{this}}">
+        {{/each}}
+        {{#each css}}
+        <link rel="stylesheet" href="/img/{{this}}">
+        {{/each}}
+    </head>
+    <body>
+        {{{body}}}
+        {{#each js}}
+        <script src="/js/{{this}}"></script>
+        {{/each}}
+    </body>
+</html>
