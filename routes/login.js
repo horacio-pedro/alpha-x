@@ -5,7 +5,15 @@ const requireDir = require('require-dir')
 requireDir("../models")
 
 router.get('/', (req, res) => {
-    res.render("pages/login/index")
+    res.render("pages/login/index",
+    {
+        title: 'Alpha X || Login',
+        systemDescription: 'Descrição do sistem aqui',
+        favicon: ['light.png'],
+        css: ['bootstrap.min.css', 'main.css'],
+        classCss: ['authentication'],
+        js: ['bootstrap.bundle.min.js']
+    })
 })
 
 module.exports = router

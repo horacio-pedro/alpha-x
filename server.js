@@ -47,10 +47,12 @@ server.use(express.json())
     // End Public Path
     // Routes
         const login = require('./routes/login')
+        const dashboard = require('./routes/dashboard')
         server.get('/', function(req, res){
             res.redirect("login")
         })
         server.use('/login', login)
+        server.use('/dashboard', dashboard)
     // End Routes
 // END CONFIGURATIONS
 
