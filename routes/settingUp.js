@@ -83,7 +83,7 @@ requireDir("../models");
             }
 
             if(erros.length > 0){
-                res.render("pages/settings/users/index", {erros: erros})
+                res.render("pages/settings/users/createUser", {erros: erros})
             }else{
                 users.findOne({email: req.body.email}).then( (users) => {
                     if(users){
