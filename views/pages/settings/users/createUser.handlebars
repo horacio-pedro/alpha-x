@@ -1,0 +1,179 @@
+<!-- Loading starts -->
+{{>_loader}}
+<!-- Loading ends -->
+
+<div class="container">
+
+    <!-- *************
+************ Header section start *************
+************* -->
+    <!-- Header start -->
+    {{>_header}}
+    <!-- Header end -->
+    <!-- Navigation start -->
+    {{>navigation}}
+    <!-- Navigation end -->
+
+    <!-- Search bar start -->
+    {{>_searchBar}}
+    <!-- Search bar end -->
+
+    <!-- *************
+************ Header section end *************
+************* -->
+
+    <!-- *************
+************ Main container start *************
+************* -->
+    <div class="main-container">
+
+
+        <!-- Page header start -->
+        <div class="page-title">
+            <div class="row gutters">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <h5 class="title">Utilizadores</h5>
+                </div>
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12">
+                    <div class="daterange-container">
+                        <div class="date-range">
+                            <div>
+                                <i class="icon-calendar" 
+                                   style="font-size: 1.2rem;color:#00b894"></i> 
+                                <script>writedate()</script>
+                                <i class="icon-clock" 
+                                   style="font-size: 1.2rem;color:#00b894"></i>
+                                <script>writeclock()</script>
+                                <span class="range-text"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page header end -->
+
+
+        <!-- Content wrapper start -->
+        <div class="content-wrapper">
+
+
+            <!-- ************************** Visitors and Revenue ************************** -->
+            <!-- Row start -->
+            <div class="row gutters justify-content-center">
+                <!-- Name's -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Nome</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="row gutters">
+                                <div class="col-xl-12 col-lglg-12 col-md-12 col-sm-12 col-12">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">Primeiro &amp; Último Nome</span>
+                                        </div>
+                                        <input type="text" aria-label="First name" class="form-control">
+                                        <input type="text" aria-label="Last name" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Name's end -->
+                <!--Email & Pass end -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Email | Palavra-passe</div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row gutters">
+                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">@</span>
+                                                <span class="input-group-text">Email</span>
+                                            </div>
+                                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">&#10033;</span>
+                                                <span class="input-group-text">Palavra-passe</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Email & Pass end -->
+                <!--Pic & Level end -->
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">Imagem de perfil | Nível</div>
+                        </div>
+                        <div class="card-body">
+
+                            <div class="row gutters">
+                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="inputGroupFileAddon01">Foto de Perfil</span>
+                                            </div>
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                                <label class="custom-file-label" for="inputGroupFile01">Escolher foto...</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <select class="custom-select" id="inputGroupSelect02">
+                                                <option selected>Selecionar nível...</option>
+                                                <option value="0">Utilizador</option>
+                                                <option value="1">Administrador</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <label class="input-group-text" for="inputGroupSelect02">Nível de Utilizador</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!--Pic & Level end -->
+
+            </div>
+            <!-- Row end -->
+
+        </div>
+        <!-- Content wrapper end -->
+
+
+    </div>
+    <!-- *************
+************ Main container end *************
+************* -->
+
+
+</div>

@@ -10,7 +10,6 @@ router.get('/', (req, res) => {
         title: 'Alpha X || Dashboard',
         systemDescription: 'Descrição do sistem aqui',
         favicon: ['light.png'],
-        classCss: ['active-page'],
         css: ['stylesheet.bundle.css'],
         js: ['bootstrap.bundle.min.js', 'script.bundle.js']
     })
