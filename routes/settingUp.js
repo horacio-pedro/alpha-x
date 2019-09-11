@@ -87,16 +87,37 @@ requireDir("../models");
             }else{
                 users.findOne({email: req.body.email}).then( (users) => {
                     if(users){
-                        req.body.flash("error_msg", "Ja existe uma conta com este email no nosso sistem")
-                        res.redirect('/utilizador/adicionar')
+                        req.body.flash("error_msg", "Ja existe uma conta com este email no sistem")
+                        res.redirect('/utilizador/criar-novo')
                     }else{
-                        const newUser = new users({
+                        const newUser = new User({
                             firstName: req.body.firstName,
                             lastName: req.body.lastName,
                             email: req.body.email,
                             password: req.body.password,
                             picture: req.body.picture
                         })
+
+                        bcrypt.genSalt(10, (erro, salt) => {
+                            bcrypt.hash(newUser.password, salt, (erro, hash) => {
+                                if(erro){
+                                    req.flash("error_msg", "Houve um erro ao salvar o utilizador");
+                                    res.redirect("/utilizadores");
+                                }
+
+                                newUser.password = hash
+
+                                newUser.save().then(() => {
+                                    req.flash("success_msg", "Utilizador criado com sucesso!");
+                                    res.redirect("/utilizadores");
+                                }).catch((err) => {
+                                    req.flash("error_msg", "Houve um erro ao criar utilizador, tente novamente!");
+                                    res.redirect("/utilizador/criar-novo");
+                                })
+
+                            });
+                        });
+
                     }
                 }).catch( (err) => {
                     req.flash("error_msg", "Houve um erro interno, contacte o administrador")

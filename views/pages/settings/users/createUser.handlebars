@@ -61,108 +61,116 @@
             <!-- ************************** Visitors and Revenue ************************** -->
             <!-- Row start -->
             <div class="row gutters justify-content-center">
-                <!-- Name's -->
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Nome</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row gutters">
-                                <div class="col-xl-12 col-lglg-12 col-md-12 col-sm-12 col-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text">Primeiro &amp; Último Nome</span>
-                                        </div>
-                                        <input type="text" aria-label="First name" class="form-control">
-                                        <input type="text" aria-label="Last name" class="form-control">
-                                    </div>
-                                </div>
+                {{>_msg}}
+                <form action="/definicoes/utilizador/adicionar" method="POST">
+                    <!-- Name's -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Nome</div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Name's end -->
-                <!--Email & Pass end -->
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Email | Palavra-passe</div>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row gutters">
-                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="form-group">
+                            <div class="card-body">
+                                <div class="row gutters">
+                                    <div class="col-xl-12 col-lglg-12 col-md-12 col-sm-12 col-12">
                                         <div class="input-group">
                                             <div class="input-group-prepend">
-                                                <span class="input-group-text">@</span>
-                                                <span class="input-group-text">Email</span>
+                                                <span class="input-group-text">Primeiro &amp; Último Nome</span>
                                             </div>
-                                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                                            <div class="input-group-append">
-                                                <span class="input-group-text">&#10033;</span>
-                                                <span class="input-group-text">Palavra-passe</span>
-                                            </div>
+                                            <input type="text" id="firstName" name="firstName" aria-label="First name" placeholder="escreva aqui o primeiro nome..." autocomplete="off" required class="form-control">
+                                            <input type="text" id="lastName" name="lastName" aria-label="Last name" placeholder="escreva aqui o último nome..." autocomplete="off" required class="form-control">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-                </div>
-                <!--Email & Pass end -->
-                <!--Pic & Level end -->
-                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Imagem de perfil | Nível</div>
-                        </div>
-                        <div class="card-body">
-
-                            <div class="row gutters">
-                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="inputGroupFileAddon01">Foto de Perfil</span>
-                                            </div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                                                <label class="custom-file-label" for="inputGroupFile01">Escolher foto...</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <select class="custom-select" id="inputGroupSelect02">
-                                                <option selected>Selecionar nível...</option>
-                                                <option value="0">Utilizador</option>
-                                                <option value="1">Administrador</option>
-                                            </select>
-                                            <div class="input-group-append">
-                                                <label class="input-group-text" for="inputGroupSelect02">Nível de Utilizador</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                    <!-- Name's end -->
+                    <!--Email & Pass end -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Email | Palavra-passe</div>
                             </div>
+                            <div class="card-body">
 
+                                <div class="row gutters">
+                                    <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">@</span>
+                                                    <span class="input-group-text">Email</span>
+                                                </div>
+                                                <input type="text" id="email" name="email" autocomplete="off" placeholder="exemplo@celfaa.ao" class="form-control" aria-label="Email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <input type="text" id="password" name="password" autocomplete="off" placeholder="mínimo 4 caracters" class="form-control" aria-label="Password">
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">&#10033;</span>
+                                                    <span class="input-group-text">Palavra-passe</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--Pic & Level end -->
+                    <!--Email & Pass end -->
+                    <!--Pic & Level end -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Imagem de perfil | Nível</div>
+                            </div>
+                            <div class="card-body">
 
+                                <div class="row gutters">
+                                    <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="picture">Foto de Perfil</span>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" name="picture" class="custom-file-input" id="picture" aria-describedby="picture">
+                                                    <label class="custom-file-label" for="picture">Escolher foto...</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6 col-lglg-6 col-md-6 col-sm-12 col-12">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <select class="custom-select" id="accessLevel" name="accessLevel">
+                                                    <option selected>Selecionar nível...</option>
+                                                    <option value="0">Utilizador</option>
+                                                    <option value="1">Administrador</option>
+                                                </select>
+                                                <div class="input-group-append">
+                                                    <label class="input-group-text" for="accessLevel">Nível de Utilizador</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--Pic & Level end -->
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="custom-btn-group">
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                            <button type="button" class="btn btn-light">Cancelar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <!-- Row end -->
 

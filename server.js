@@ -5,6 +5,7 @@
     const mongoose = require('mongoose');
     const path = require('path');
     const requireDir = require('require-dir');
+    const bcrypt = require('bcryptjs');
 // END LOADING MODULES
 
 const server = express();
