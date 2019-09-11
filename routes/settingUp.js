@@ -75,7 +75,7 @@ requireDir("../models");
             }
 
             if(req.body.password != req.body.password2){
-                erros.push({texto: "As palavras-passe nao coinsidem, tente novamente!"})
+                erros.push({texto: "As palavras-passe nao coincidem, tente novamente!"})
             }
 
             if(!req.body.picture || typeof req.body.picture == undefined || req.body.picture ==  null){
