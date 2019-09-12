@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const requireDir = require('require-dir');
+const User = mongoose.model('users');
 requireDir("../models");
 
 // SETTINGS
@@ -85,7 +86,7 @@ requireDir("../models");
             if(erros.length > 0){
                 res.render("pages/settings/users/createUser", {erros: erros})
             }else{
-                users.findOne({email: req.body.email}).then( (users) => {
+                User.findOne({email: req.body.email}).then( (users) => {
                     if(users){
                         req.body.flash("error_msg", "Ja existe uma conta com este email no sistem")
                         res.redirect('/utilizador/criar-novo')
