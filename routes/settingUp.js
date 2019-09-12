@@ -3,7 +3,7 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const requireDir = require('require-dir');
 const User = mongoose.model('users');
-requireDir("../models");
+const bcrypt = require('bcryptjs');
 
 // SETTINGS
     // Main Settings
@@ -84,12 +84,13 @@ requireDir("../models");
             }
 
             if(erros.length > 0){
-                res.render("pages/settings/users/createUser", {erros: erros})
+                res.render("pages/settings/users/createUser", {erros: erros});
+                console.log(erros)
             }else{
                 User.findOne({email: req.body.email}).then( (users) => {
                     if(users){
                         req.body.flash("error_msg", "Ja existe uma conta com este email no sistem")
-                        res.redirect('/utilizador/criar-novo')
+                        res.redirect('/definicoes/utilizador/criar-novo')
                     }else{
                         const newUser = new User({
                             firstName: req.body.firstName,
@@ -103,17 +104,17 @@ requireDir("../models");
                             bcrypt.hash(newUser.password, salt, (erro, hash) => {
                                 if(erro){
                                     req.flash("error_msg", "Houve um erro ao salvar o utilizador");
-                                    res.redirect("/utilizadores");
+                                    res.redirect("/definicoes/utilizadores");
                                 }
 
                                 newUser.password = hash
 
                                 newUser.save().then(() => {
                                     req.flash("success_msg", "Utilizador criado com sucesso!");
-                                    res.redirect("/utilizadores");
+                                    res.redirect("/definicoes/utilizadores");
                                 }).catch((err) => {
                                     req.flash("error_msg", "Houve um erro ao criar utilizador, tente novamente!");
-                                    res.redirect("/utilizador/criar-novo");
+                                    res.redirect("/definicoes/utilizador/criar-novo");
                                 })
 
                             });
@@ -122,7 +123,8 @@ requireDir("../models");
                     }
                 }).catch( (err) => {
                     req.flash("error_msg", "Houve um erro interno, contacte o administrador")
-                    res.redirect('/utilizadores')
+                    res.redirect('/definicoes/utilizadores')
+                    console.log(err)
                 })
             }
         });

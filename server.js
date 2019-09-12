@@ -5,7 +5,10 @@
     const mongoose = require('mongoose');
     const path = require('path');
     const requireDir = require('require-dir');
-    const bcrypt = require('bcryptjs');
+    const session = require('express-session');
+    const flash = require('connect-flash');
+    const passport = require('passport');
+    require('./config/auth')(passport);
 // END LOADING MODULES
 
 const server = express();
@@ -13,15 +16,24 @@ server.use(express.json());
 
 // CONFIGURATIONS
     // Session
+        server.use(session({
+            secret: "SystemSecurity#2019",
+            resave: true,
+            saveUninitialized: true
+        }));
+        server.use(passport.initialize());
+        server.use(passport.session());
+        server.use(flash());
     // End Session
     // MidleWare
-       /* server.use((req, res, next) => {
+       server.use((req, res, next) => {
 
-            res.locals.success_msg = req.flash("success_msg")
-            res.locals.error_msg = req.flash("error_msg")
-            next()
+            res.locals.success_msg = req.flash("success_msg");
+            res.locals.error_msg = req.flash("error_msg");
+            res.locals.info_msg = req.flash("info_msg");
+            next();
 
-        });*/
+        });
     // End MidleWare
     // Body Parser
         server.use(bodyParser.urlencoded({extended: true}));

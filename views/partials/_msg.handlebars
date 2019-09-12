@@ -2,28 +2,28 @@
     <div class="notify info">
         <div class="notify-body">
             <span class="type">Info</span>
-            <div class="notify-title">Give your valuable feedback.<img src="/img/notification-info.svg" alt=""></div>
-            <div class="notify-text">How likely are you to recommend Retail Dashboard to your friends?</div>
-        </div>
-    </div>
-{{/if}}
-
-{{#if success_msg}}
-    <div class="notify danger">
-        <div class="notify-body">
-            <span class="type">Erro</span>
-            <div class="notify-title">Give your valuable feedback.<img src="/img/notification-danger.svg" alt=""></div>
-            <div class="notify-text">How likely are you to recommend Retail Dashboard to your friends?</div>
+            <div class="notify-title">Informação do sistema.<img src="/img/notification-info.svg" alt=""></div>
+            <div class="notify-text">{{info_msg}}</div>
         </div>
     </div>
 {{/if}}
 
 {{#if error_msg}}
+    <div class="notify danger">
+        <div class="notify-body">
+            <span class="type">Erro</span>
+            <div class="notify-title">Erro no processamento dos Dados.<img src="/img/notification-danger.svg" alt=""></div>
+            <div class="notify-text">{{error_msg}}</div>
+        </div>
+    </div>
+{{/if}}
+
+{{#if success_msg}}
     <div class="notify success">
         <div class="notify-body">
             <span class="type">Sucesso</span>
-            <div class="notify-title">Give your valuable feedback.<img src="/img/notification-success.svg" alt=""></div>
-            <div class="notify-text">How likely are you to recommend Retail Dashboard to your friends?</div>
+            <div class="notify-title">Sucesso no processamento dos Dados.<img src="/img/notification-success.svg" alt=""></div>
+            <div class="notify-text">{{success_msg}}</div>
         </div>
     </div>
 {{/if}}

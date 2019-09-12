@@ -57,6 +57,16 @@
         <!-- Content wrapper start -->
         <div class="content-wrapper">
 
+            {{#each erros}}
+                <div class="notify info">
+                    <div class="notify-body">
+                        <span class="type">Info</span>
+                        <div class="notify-title">Informação do sistema.<img src="/img/notification-info.svg" alt="{{info_msg}}"></div>
+                        <div class="notify-text">{{texto}}</div>
+                    </div>
+                </div>
+            {{else}}
+            {{/each}}
 
             <!-- ************************** Visitors and Revenue ************************** -->
             <!-- Row start -->
@@ -101,14 +111,14 @@
                                                     <span class="input-group-text">@</span>
                                                     <span class="input-group-text">Email</span>
                                                 </div>
-                                                <input type="text" id="email" name="email" autocomplete="off" placeholder="exemplo@celfaa.ao" class="form-control" aria-label="Email" required>
+                                                <input type="email" id="email" name="email" autocomplete="off" placeholder="exemplo@celfaa.ao" class="form-control" aria-label="Email" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-xl-4 col-lglg-4 col-md-4 col-sm-4 col-12">
                                         <div class="form-group">
                                             <div class="input-group">
-                                                <input type="text" id="password" name="password" autocomplete="off" placeholder="mínimo 4 caracters" class="form-control" aria-label="Password">
+                                                <input type="password" id="password" name="password" autocomplete="off" placeholder="mínimo 4 caracters" class="form-control" aria-label="Password">
                                                 <div class="input-group-append">
                                                     <span class="input-group-text">&#10033;</span>
                                                     <span class="input-group-text">Palavra-passe</span>
@@ -123,7 +133,7 @@
                                                     <span class="input-group-text">&#10033;</span>
                                                     <span class="input-group-text">Palavra-passe</span>
                                                 </div>
-                                                <input type="text" id="password2" name="password2" autocomplete="off" placeholder="Confirmar palavra-passe..." class="form-control" aria-label="Password2" required>
+                                                <input type="password" id="password2" name="password2" autocomplete="off" placeholder="Confirmar palavra-passe..." class="form-control" aria-label="Password2" required>
                                             </div>
                                         </div>
                                     </div>

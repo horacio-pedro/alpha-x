@@ -19,11 +19,11 @@ const User = new Schema({
         required: true
     },
     picture: {
-        type: String,
+        type: String
     },
     accessLevel: {
         type: Number,
-        default: 0
+        required: true
     },
 },
 {
