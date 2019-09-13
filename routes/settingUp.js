@@ -68,11 +68,11 @@ const bcrypt = require('bcryptjs');
             }
 
             if(!req.body.password || typeof req.body.password == undefined || req.body.password ==  null){
-                erros.push({texto: "Nome invalido"})
+                erros.push({texto: "Palavra-passe inválida!"})
             }
 
             if(req.body.password.length < 4){
-                erros.push({texto: "Senha demasiado curta, caracters minimos aceites 4"})
+                erros.push({texto: "Palavra-passe demasiado curta, caracters mínimos aceites 4"})
             }
 
             if(req.body.password != req.body.password2){
@@ -81,6 +81,10 @@ const bcrypt = require('bcryptjs');
 
             if(!req.body.picture || typeof req.body.picture == undefined || req.body.picture ==  null){
                 erros.push({texto: "Imagem/Avatar invalido"})
+            }
+
+            if(!req.body.accessLevel || typeof req.body.accessLevel == undefined || req.body.accessLevel == null){
+                erros.push({texto: "Selecione o nível do utilizador"})
             }
 
             if(erros.length > 0){
@@ -97,7 +101,8 @@ const bcrypt = require('bcryptjs');
                             lastName: req.body.lastName,
                             email: req.body.email,
                             password: req.body.password,
-                            picture: req.body.picture
+                            picture: req.body.picture,
+                            accessLevel: req.body.accessLevel
                         })
 
                         bcrypt.genSalt(10, (erro, salt) => {
@@ -122,9 +127,8 @@ const bcrypt = require('bcryptjs');
 
                     }
                 }).catch( (err) => {
-                    req.flash("error_msg", "Houve um erro interno, contacte o administrador")
-                    res.redirect('/definicoes/utilizadores')
-                    console.log(err)
+                    req.flash("error_msg", "Houve um erro interno, contacte o administrador");
+                    res.redirect('/definicoes/utilizadores');
                 })
             }
         });
