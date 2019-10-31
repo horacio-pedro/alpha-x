@@ -12,26 +12,30 @@ module.exports = function(passport){
 
     passport.use(new localStrategy({usernameField: 'email'}, (email, password, done) => {
 
-        User.findOne({email: email}).then((user) => {
-            if(!user){
+        User.findOne({email: email}).then((users) => {
+            if(!users){
                 return done(null, false, {message: "Esta conta não existe"});
             }
 
-            bcrypt.compare(password, user.password, (erro, macth) => {
+            bcrypt.compare(password, users.password, (erro, match) => {
                 if(match){
-                    return done(null, user);
+                    return done(null, users);
                 }else{
-                    return done(null, false, {message: "Palavra-passe incorrecta"})
+                    return done(null, false, {message: "Palavra-passe incorrecta"});
                 }
-            })
-        })
+            });
+        });
 
-    }))
+    }));
+
+    passport.serializeUser( (users, done) => {
+        done(null, users.id);
+    });
 
     passport.deserializeUser((id, done) => {
-        User.findById(id, (err, user) => {
-            done(err, user)
-        })
-    })
+        User.findById(id, (err, users) => {
+            done(err, users);
+        });
+    });
 
 }

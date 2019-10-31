@@ -1,6 +1,6 @@
 module.exports = {
     accessControl: function(req, res, next) {
-        if(req.isAuthenticated() && req.user.accessLevel == 0, 1){
+        if(req.isAuthenticated()){
             return next();
         }
         req.flash("error_msg", "Acesso negado, efetue o login");

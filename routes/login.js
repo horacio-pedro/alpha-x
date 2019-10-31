@@ -3,6 +3,7 @@ const router = express.Router()
 const mongoose = require("mongoose")
 const requireDir = require('require-dir')
 requireDir("../models")
+const passport = require('passport');
 
 router.get('/', (req, res) => {
     res.render("pages/login/index",
@@ -15,5 +16,19 @@ router.get('/', (req, res) => {
         js: ['bootstrap.bundle.min.js']
     })
 })
+
+router.post("/", (req, res, next) => {
+    passport.authenticate("local", {
+        successRedirect: "/dashboard",
+        failureRedirect: "/",
+        failureFlash: true
+    })(req, res, next)
+});
+
+router.get("/sair", (req, res) => {
+    req.logout();
+    req.flash("success_msg", "Deslogado com sucesso!");
+    res.redirect("/");
+});
 
 module.exports = router

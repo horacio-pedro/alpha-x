@@ -4,13 +4,15 @@ const mongoose = require("mongoose");
 const requireDir = require('require-dir');
 const User = mongoose.model('users');
 const bcrypt = require('bcryptjs');
+const { accessControl } = require('../config/accessControl');
+const {  isAdmin } = require('../config/accessControl');
 
 // SETTINGS
     // Main Settings
-        router.get('/', (req, res) => {
+        router.get('/', accessControl, isAdmin, (req, res) => {
             res.render("pages/dashboard/index",
             {
-                title: 'Alpha X || Dashboard',
+                title: 'Alpha X || Definições',
                 systemDescription: 'Descrição do sistem aqui',
                 favicon: ['light.png'],
                 css: ['stylesheet.bundle.css'],
@@ -19,7 +21,7 @@ const bcrypt = require('bcryptjs');
         });
     // End Main Settings
     // Users
-    router.get('/utilizadores', (req, res) => {
+    router.get('/utilizadores', accessControl, isAdmin, (req, res) => {
         res.render("pages/settings/users/index",
         {
             title: 'Alpha X || Utilizadores',
@@ -30,7 +32,7 @@ const bcrypt = require('bcryptjs');
         })
     })
         // Main Users
-            router.get('/utilizador/meu-perfil', (req, res) => {
+            router.get('/utilizador/meu-perfil', accessControl, (req, res) => {
                 res.render("pages/settings/users/myProfile",
                 {
                     title: 'Alpha X || Meu Perfil',
@@ -42,7 +44,7 @@ const bcrypt = require('bcryptjs');
             });
         // End Main Users
         // Create User
-        router.get('/utilizador/criar-novo', (req, res) => {
+        router.get('/utilizador/criar-novo', accessControl, isAdmin, (req, res) => {
             res.render("pages/settings/users/createUser",
             {
                 title: 'Alpha X || Criar Utilizador',

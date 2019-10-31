@@ -3,8 +3,9 @@ const router = express.Router()
 const mongoose = require("mongoose")
 const requireDir = require('require-dir')
 requireDir("../models")
+const { accessControl } = require('../config/accessControl');
 
-router.get('/', (req, res) => {
+router.get('/', accessControl, (req, res) => {
     res.render("pages/dashboard/index",
     {
         title: 'Alpha X || Dashboard',
